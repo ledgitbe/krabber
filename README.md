@@ -19,5 +19,8 @@ const scrapeConfig = {
     }
 }
 
-Scrape()
+Scrape(scrapeConfig)
+    .then((res) => {
+        console.log(res.numberOfCommits);
+    })
 ```
