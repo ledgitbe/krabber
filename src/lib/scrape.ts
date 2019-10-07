@@ -1,14 +1,15 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import cleanDeep from 'clean-deep';
 import { JSDOM } from 'jsdom';
 
 export interface ScrapeConfig {
-  url: string;
-  axiosInstance: any;
+  url: URL;
   select: {
     [key: string]: (arg: SelectArguments) => any;
   };
-  paginate: {
+  options?: AxiosRequestConfig;
+  axiosInstance?: AxiosInstance;
+  paginate?: {
     next: (arg: SelectArguments) => URL;
     map: (arg: SelectArguments) => (pageResult: any) => any;
     reduce: (arg: SelectArguments) => (final: any, pageResult: any) => any;
@@ -16,7 +17,7 @@ export interface ScrapeConfig {
 }
 
 export interface SelectArguments {
-  dom: JSDOM;
+  dom: any;
   res: any;
   prev: any;
   url: string;
@@ -41,11 +42,11 @@ export default function Scrape(config: ScrapeConfig) {
     });
   }
 
-  const { select, paginate } = config;
+  const { select, paginate, options } = config;
   const originalUrl = config.url;
 
   async function _scrape(url: string, prev: any): Promise<any> {
-    const response = await ax.get(url);
+    const response = await ax(url, options);
     const dom = response.data.window.document;
     let res: any = {};
 
