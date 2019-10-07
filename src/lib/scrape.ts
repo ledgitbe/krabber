@@ -25,7 +25,7 @@ export interface SelectArguments {
 
 export type URL = string;
 
-export default function Scrape(config: ScrapeConfig) {
+export function Scrape(config: ScrapeConfig) {
   let ax: AxiosInstance;
   const pageResults: any[] = [];
   let finalResult: any;

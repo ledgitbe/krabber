@@ -1,5 +1,5 @@
 import test from 'ava';
-import Scrape, { ScrapeConfig, SelectArguments } from './scrape';
+import { Scrape, ScrapeConfig, SelectArguments } from './scrape';
 
 test.cb('scrape can correctly scrape example.com', t => {
   t.plan(3);

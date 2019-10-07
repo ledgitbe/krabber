@@ -5,7 +5,7 @@ Easy to use webscraper using Axios and JSDOM.
 ## Example
 
 ```javascript
-import Scrape from 'krabber';
+import { Scrape } from 'krabber';
 
 const scrapeConfig = {
     url: 'https://github.com/axios/axios',
