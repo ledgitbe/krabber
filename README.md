@@ -14,7 +14,7 @@ const scrapeConfig = {
     },
     select: {
         numberOfCommits: ({ dom, res, prev, url }) => {
-            return dom.querySelector('.commits span.text-emphasized.num').innerText
+            return dom.querySelector('.commits span.text-emphasized.num').innerHTML.trim();
         }
     }
 }
