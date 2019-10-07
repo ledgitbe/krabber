@@ -1,6 +1,6 @@
 # krabber
 
-Easy to use webscraper using Axios and JSOM.
+Easy to use webscraper using Axios and JSDOM.
 
 ## Example
 
