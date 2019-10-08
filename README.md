@@ -25,6 +25,6 @@ Scrape(scrapeConfig)
     })
 ```
 
-# More examples, including pagination handling
+## More examples, including pagination handling
 
 Please see the test suite in [src/lib/scrape.spec.ts](src/lib/scrape.spec.ts)
