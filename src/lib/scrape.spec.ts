@@ -90,7 +90,7 @@ test.cb('can correcly scrape with pagination', t => {
   const scrapeConfig: ScrapeConfig = {
     url: 'http://www.example.com',
     select: {
-      pageNumber: ({ prev }: any) => {
+      pageNumber: ({ prev }: SelectArguments) => {
         return prev.pageNumber ? prev.pageNumber + 1 : 1;
       },
       pageH1: ({ dom }: SelectArguments) => {
@@ -127,7 +127,7 @@ test.cb('can correcly scrape with pagination and map', t => {
   const scrapeConfig: ScrapeConfig = {
     url: 'http://www.example.com',
     select: {
-      pageNumber: ({ prev }: any) => {
+      pageNumber: ({ prev }: SelectArguments) => {
         return prev.pageNumber ? prev.pageNumber + 1 : 1;
       },
       pageH1: ({ dom }: SelectArguments) => {
@@ -172,7 +172,7 @@ test.cb('can correcly scrape with pagination and reduce', t => {
   const scrapeConfig: ScrapeConfig = {
     url: 'http://www.example.com',
     select: {
-      pageNumber: ({ prev }: any) => {
+      pageNumber: ({ prev }: SelectArguments) => {
         return prev.pageNumber ? prev.pageNumber + 1 : 1;
       },
       pageH1: ({ dom }: SelectArguments) => {
