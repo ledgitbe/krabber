@@ -1,6 +1,6 @@
 {
   "name": "krabber",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Easy to use webscraper",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
