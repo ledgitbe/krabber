@@ -101,5 +101,5 @@ export function Scrape(config: ScrapeConfig) {
     return res;
   }
 
-  return _scrape(originalUrl, { kak: 1 });
+  return _scrape(originalUrl, {});
 }
