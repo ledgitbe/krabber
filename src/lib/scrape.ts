@@ -5,14 +5,23 @@ import { JSDOM } from 'jsdom';
 export interface ScrapeConfig {
   url: URL;
   select: {
-    [key: string]: (arg: SelectArguments) => any;
+    [key: string]: any | ((arg: SelectArguments) => any);
   };
   options?: AxiosRequestConfig;
   axiosInstance?: AxiosInstance;
   paginate?: {
-    next: (arg: SelectArguments) => URL;
-    map: (arg: SelectArguments) => (pageResult: any) => any;
-    reduce: (arg: SelectArguments) => (final: any, pageResult: any) => any;
+    next: (arg: SelectArguments) => URL | false;
+    map?: (
+      arg: SelectArguments
+    ) => (pageResult: any, currentIndex?: number) => any;
+    reduce?: (
+      arg: SelectArguments
+    ) => (
+      accumulator: any,
+      currentValue: any,
+      currentIndex?: number,
+      array?: any[]
+    ) => any;
   };
 }
 
@@ -76,10 +85,10 @@ export function Scrape(config: ScrapeConfig) {
         finalResult = pageResults.map(map(args));
       }
       if (reduce && map) {
-        finalResult = finalResult.reduce(reduce(args));
+        finalResult = finalResult.reduce(reduce(args), null);
       }
       if (reduce && !map) {
-        finalResult = pageResults.reduce(reduce(args));
+        finalResult = pageResults.reduce(reduce(args), null);
       }
 
       if (finalResult) {
@@ -92,5 +101,5 @@ export function Scrape(config: ScrapeConfig) {
     return res;
   }
 
-  return _scrape(originalUrl, {});
+  return _scrape(originalUrl, { kak: 1 });
 }
