@@ -32,6 +32,7 @@ test:
 codecov:
   stage: deploy
   dependencies:
+    - npm
     - test
   script:
     - mv coverage/ public/
@@ -45,6 +46,7 @@ codecov:
 pages:
   stage: deploy
   dependencies:
+    - npm
     - test
   script:
     - npm run cov:html
