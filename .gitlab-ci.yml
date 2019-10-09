@@ -24,11 +24,17 @@ test:
     - npm
   script:
     - npm test
+  artifacts:
+    expire_in: 1 days
+    when: on_success
+    paths:
+      .nyc_output/
 
 codecov:
   stage: deploy
+  dependencies:
+    - test
   script:
-    - npm run cov:html
     - npm run cov:send
   only:
     - master
