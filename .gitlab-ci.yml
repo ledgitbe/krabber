@@ -28,7 +28,7 @@ test:
     expire_in: 1 days
     when: on_success
     paths:
-      .nyc_output/
+      - .nyc_output/
 
 codecov:
   stage: deploy
