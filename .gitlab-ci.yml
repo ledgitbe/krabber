@@ -33,6 +33,7 @@ test:
 codecov:
   stage: deploy
   dependencies:
+    - npm
     - test
   script:
     - npm run cov:send
