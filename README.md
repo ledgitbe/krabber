@@ -2,6 +2,8 @@
 
 Easy to use webscraper using Axios and JSDOM.
 
+[![codecov](https://codecov.io/gl/ledgit/krabber/branch/master/graph/badge.svg)](https://codecov.io/gl/ledgit/krabber)
+
 ## Example
 
 ```javascript

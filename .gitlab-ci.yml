@@ -8,7 +8,6 @@ stages:
 npm:
   stage: npm
   script:
-    - npm config set registry ${CI_NPM_REGISTRY}
     - npm install
   cache:
     paths:
@@ -24,7 +23,9 @@ test:
   dependencies:
     - npm
   script:
-    - npm run cov
+    - npm test
+    - npm run cov:html
+    - npm run cov:send
   artifacts:
     paths:
       - coverage/
