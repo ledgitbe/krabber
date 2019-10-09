@@ -24,13 +24,12 @@ test:
     - npm
   script:
     - npm test
-    - npm run cov:html
-    - npm run cov:send
   artifacts:
     paths:
       - coverage/
+      - .nyc_output/
 
-pages:
+codecov:
   stage: deploy
   dependencies:
     - test
@@ -40,5 +39,15 @@ pages:
     paths:
       - public
     expire_in: 30 days
+  only:
+    - master
+
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  script:
+    - npm run cov:html
+    - npm run cov:send
   only:
     - master
