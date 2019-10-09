@@ -5,10 +5,18 @@
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/ledgitbe/krabber",
+  "repository": "https://gitlab.com/ledgit/krabber.git",
   "author": "Ledgit bvba",
   "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "HTML",
+    "scraping",
+    "webscraper",
+    "webscraping",
+    "axios",
+    "JSDOM",
+    "pagination"
+  ],
   "scripts": {
     "describe": "npm-scripts-info",
     "build": "run-s clean && run-p build:*",
