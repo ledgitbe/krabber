@@ -1,7 +1,8 @@
 image: node:10.0.0
 
 include:
-  template: Dependency-Scanning.gitlab-ci.yml
+  - template: Dependency-Scanning.gitlab-ci.yml
+  - template: Code-Quality.gitlab-ci.yml
 
 stages:
   - npm
