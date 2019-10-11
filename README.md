@@ -3,7 +3,8 @@
 Easy to use webscraper using Axios and JSDOM.
 
 [![Codecov branch](https://img.shields.io/codecov/c/gitlab/ledgit/krabber/master)](https://codecov.io/gl/ledgit/krabber)
-![Gitlab pipeline status (branch)](https://img.shields.io/gitlab/pipeline/ledgit/krabber/master)
+[![Gitlab pipeline status (branch)](https://img.shields.io/gitlab/pipeline/ledgit/krabber/master)](https://gitlab.com/ledgit/krabber/pipelines)
+[![npm](https://img.shields.io/npm/v/krabber)](https://www.npmjs.com/package/krabber)
 
 ## Example
 
