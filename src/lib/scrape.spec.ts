@@ -53,7 +53,7 @@ test.cb('scrape can use a custom axios instance without problems', t => {
   Scrape(scrapeConfig).then((res: any) => {
     t.is(res.pageH1, 'Example Domain');
     t.is(res.pageTitle, 'Example Domain');
-    t.is(res.linkUrl, 'http://www.iana.org/domains/example');
+    t.is(res.linkUrl.includes('iana'), true);
     t.end();
   });
 });
@@ -79,7 +79,7 @@ test.cb('scrape can correctly scrape example.com', t => {
   Scrape(scrapeConfig).then((res: any) => {
     t.is(res.pageH1, 'Example Domain');
     t.is(res.pageTitle, 'Example Domain');
-    t.is(res.linkUrl, 'http://www.iana.org/domains/example');
+    t.is(res.linkUrl.includes('iana'), true);
     t.end();
   });
 });
