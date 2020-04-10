@@ -47,7 +47,7 @@ export function Scrape(config: ScrapeConfig) {
     ax = config.axiosInstance;
   } else {
     ax = axios.create({
-      transformResponse: data => new JSDOM(data)
+      transformResponse: (data) => new JSDOM(data),
     });
   }
 

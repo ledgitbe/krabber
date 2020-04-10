@@ -3,7 +3,7 @@ import axios from 'axios';
 import { JSDOM } from 'jsdom';
 import { Scrape, ScrapeConfig, SelectArguments } from './scrape';
 
-test('scrape will throw error when url is not provided', async t => {
+test('scrape will throw error when url is not provided', async (t) => {
   t.plan(2);
 
   const scrapeConfig = {
@@ -16,8 +16,8 @@ test('scrape will throw error when url is not provided', async t => {
       },
       linkUrl: ({ dom }: SelectArguments) => {
         return dom.querySelector('a').href;
-      }
-    }
+      },
+    },
   };
 
   const err = await t.throws(() =>
@@ -26,11 +26,11 @@ test('scrape will throw error when url is not provided', async t => {
   t.is(err.message, 'url is required');
 });
 
-test.cb('scrape can use a custom axios instance without problems', t => {
+test.cb('scrape can use a custom axios instance without problems', (t) => {
   t.plan(3);
 
   const customAxiosInstance = axios.create({
-    transformResponse: data => new JSDOM(data)
+    transformResponse: (data) => new JSDOM(data),
   });
 
   const scrapeConfig: ScrapeConfig = {
@@ -46,8 +46,8 @@ test.cb('scrape can use a custom axios instance without problems', t => {
       linkUrl: ({ dom }: SelectArguments) => {
         return dom.querySelector('a').href;
       },
-      simpleAttribute: 'Testing'
-    }
+      simpleAttribute: 'Testing',
+    },
   };
 
   Scrape(scrapeConfig).then((res: any) => {
@@ -58,7 +58,7 @@ test.cb('scrape can use a custom axios instance without problems', t => {
   });
 });
 
-test.cb('scrape can correctly scrape example.com', t => {
+test.cb('scrape can correctly scrape example.com', (t) => {
   t.plan(3);
 
   const scrapeConfig: ScrapeConfig = {
@@ -72,8 +72,8 @@ test.cb('scrape can correctly scrape example.com', t => {
       },
       linkUrl: ({ dom }: SelectArguments) => {
         return dom.querySelector('a').href;
-      }
-    }
+      },
+    },
   };
 
   Scrape(scrapeConfig).then((res: any) => {
@@ -84,7 +84,7 @@ test.cb('scrape can correctly scrape example.com', t => {
   });
 });
 
-test.cb('can correcly scrape with pagination', t => {
+test.cb('can correcly scrape with pagination', (t) => {
   t.plan(5);
 
   const scrapeConfig: ScrapeConfig = {
@@ -95,7 +95,7 @@ test.cb('can correcly scrape with pagination', t => {
       },
       pageH1: ({ dom }: SelectArguments) => {
         return dom.querySelector('h1').innerHTML;
-      }
+      },
     },
     paginate: {
       next: ({ res }) => {
@@ -103,8 +103,8 @@ test.cb('can correcly scrape with pagination', t => {
           return false;
         }
         return `http://www.example.com/?pageNumber=${res.pageNumber}`;
-      }
-    }
+      },
+    },
   };
 
   Scrape(scrapeConfig)
@@ -121,7 +121,7 @@ test.cb('can correcly scrape with pagination', t => {
     });
 });
 
-test.cb('can correcly scrape with pagination and map', t => {
+test.cb('can correcly scrape with pagination and map', (t) => {
   t.plan(3);
 
   const scrapeConfig: ScrapeConfig = {
@@ -132,7 +132,7 @@ test.cb('can correcly scrape with pagination and map', t => {
       },
       pageH1: ({ dom }: SelectArguments) => {
         return dom.querySelector('h1').innerHTML;
-      }
+      },
     },
     paginate: {
       next: ({ res }) => {
@@ -142,11 +142,8 @@ test.cb('can correcly scrape with pagination and map', t => {
         return `http://www.example.com/?pageNumber=${res.pageNumber}`;
       },
       map: () => (pageResult: any) =>
-        pageResult.pageH1
-          .split('')
-          .reverse()
-          .join('')
-    }
+        pageResult.pageH1.split('').reverse().join(''),
+    },
   };
 
   Scrape(scrapeConfig)
@@ -157,7 +154,7 @@ test.cb('can correcly scrape with pagination and map', t => {
         'niamoD elpmaxE',
         'niamoD elpmaxE',
         'niamoD elpmaxE',
-        'niamoD elpmaxE'
+        'niamoD elpmaxE',
       ]);
       t.end();
     })
@@ -166,7 +163,7 @@ test.cb('can correcly scrape with pagination and map', t => {
     });
 });
 
-test.cb('can correcly scrape with pagination and reduce', t => {
+test.cb('can correcly scrape with pagination and reduce', (t) => {
   t.plan(1);
 
   const scrapeConfig: ScrapeConfig = {
@@ -177,7 +174,7 @@ test.cb('can correcly scrape with pagination and reduce', t => {
       },
       pageH1: ({ dom }: SelectArguments) => {
         return dom.querySelector('h1').innerHTML;
-      }
+      },
     },
     paginate: {
       next: ({ res }) => {
@@ -193,8 +190,8 @@ test.cb('can correcly scrape with pagination and reduce', t => {
         } else {
           return { total: pageResult.pageNumber };
         }
-      }
-    }
+      },
+    },
   };
 
   Scrape(scrapeConfig)
@@ -207,7 +204,7 @@ test.cb('can correcly scrape with pagination and reduce', t => {
     });
 });
 
-test.cb('can correcly scrape with pagination and map and reduce', t => {
+test.cb('can correcly scrape with pagination and map and reduce', (t) => {
   t.plan(1);
 
   const scrapeConfig: ScrapeConfig = {
@@ -218,7 +215,7 @@ test.cb('can correcly scrape with pagination and map and reduce', t => {
       },
       pageH1: ({ dom }: SelectArguments) => {
         return dom.querySelector('h1').innerHTML;
-      }
+      },
     },
     paginate: {
       next: ({ res }) => {
@@ -235,8 +232,8 @@ test.cb('can correcly scrape with pagination and map and reduce', t => {
         } else {
           return { concatenatedString: pageResult };
         }
-      }
-    }
+      },
+    },
   };
 
   Scrape(scrapeConfig)
