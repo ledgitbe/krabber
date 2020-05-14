@@ -38,8 +38,8 @@
     "doc:json": "typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --json build/docs/typedoc.json",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
-    "preversion": "run-s reset test cov:check doc:html",
-    "postversion": "git push && git push --tags && npm publish"
+    "release": "run-s reset test cov:check doc:html version",
+    "version": "standard-version"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -73,6 +73,7 @@
     "nyc": "^15.0.1",
     "open-cli": "^6.0.1",
     "prettier": "^2.0.5",
+    "standard-version": "^8.0.0",
     "trash-cli": "^3.0.0",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
