@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://gitlab.com/ledgit/krabber/compare/v1.1.5...v1.1.6) (2020-05-14)
+
 ### [1.0.2](https://github.com/ledgitbe/krabber/compare/v1.0.1...v1.0.2) (2019-10-07)
 
 
