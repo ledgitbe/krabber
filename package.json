@@ -57,7 +57,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "clean-deep": "^3.3.0",
     "jsdom": "^16.2.2"
   },
